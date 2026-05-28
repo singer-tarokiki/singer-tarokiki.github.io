@@ -32,8 +32,8 @@ export function Header() {
               <path d="M12 2 L14 9 L21 9 L15.5 13.5 L17.5 21 L12 16.5 L6.5 21 L8.5 13.5 L3 9 L10 9 Z" />
             </svg>
           </span>
-          <span className="text-cantarella">KIKI</span>
-          <span className="hidden sm:inline text-xs font-light tracking-[0.3em] text-silver/70">·TARO·</span>
+          <span className="text-cantarella">TAROKIKI</span>
+          <span className="hidden sm:inline text-xs font-light tracking-[0.3em] text-silver/70">·塔罗琪琪·</span>
         </Link>
 
         {/* Desktop Navigation */}

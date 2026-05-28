@@ -14,10 +14,10 @@ export function Footer() {
       <div className="container mx-auto flex flex-col items-center gap-6 px-4 py-12 md:flex-row md:justify-between">
         <div className="text-center md:text-left">
           <p className="font-heading text-lg font-bold tracking-[0.3em] text-cantarella">
-            KIKI · TARO
+            TAROKIKI
           </p>
           <p className="mt-1 text-xs text-silver/50">
-            © {new Date().getFullYear()} Kiki Zhang. All songs sung under moonlight.
+            © {new Date().getFullYear()} Tarokiki. All songs sung under moonlight.
           </p>
         </div>
 

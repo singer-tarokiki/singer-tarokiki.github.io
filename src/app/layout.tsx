@@ -4,14 +4,14 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: {
-    default: "Kiki Zhang · 张塔罗 — Independent Vocalist",
-    template: "%s | Kiki · Taro",
+    default: "Tarokiki · 塔罗琪琪 — Independent Vocalist",
+    template: "%s | Tarokiki",
   },
   description:
-    "独立歌手 Kiki Zhang（张塔罗）的官方网站 —— 收录最新单曲、演出预告、相册与故事。在午夜与晨曦的缝隙里歌唱。",
+    "独立歌手 Tarokiki（塔罗琪琪）的官方网站 —— 收录最新单曲、演出预告、相册与故事。在午夜与晨曦的缝隙里歌唱。",
   keywords: [
-    "Kiki Zhang",
-    "塔罗",
+    "Tarokiki",
+    "塔罗琪琪",
     "tarokiki",
     "singer-tarokiki",
     "独立歌手",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     "Live Music",
     "Singer",
   ],
-  authors: [{ name: "Kiki Zhang" }],
-  creator: "Kiki Zhang",
-  publisher: "Kiki Zhang",
+  authors: [{ name: "Tarokiki" }],
+  creator: "Tarokiki",
+  publisher: "Tarokiki",
   metadataBase: new URL("https://singer-tarokiki.github.io"),
   alternates: {
     canonical: "/",
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "zh_CN",
     url: "https://singer-tarokiki.github.io",
-    title: "Kiki Zhang · 张塔罗 — Independent Vocalist",
+    title: "Tarokiki · 塔罗琪琪 — Independent Vocalist",
     description:
-      "独立歌手 Kiki Zhang —— 在午夜与晨曦的缝隙里歌唱。最新单曲《Velvet Midnight》上线中。",
-    siteName: "Kiki · Taro",
+      "独立歌手 Tarokiki —— 在午夜与晨曦的缝隙里歌唱。最新单曲《Velvet Midnight》上线中。",
+    siteName: "Tarokiki",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kiki Zhang · Independent Vocalist",
+    title: "Tarokiki · Independent Vocalist",
     description: "A voice woven from velvet midnight and silver dawn.",
   },
   robots: {
@@ -66,8 +66,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "MusicGroup",
-              name: "Kiki Zhang",
-              alternateName: ["张塔罗", "Kiki · Taro"],
+              name: "Tarokiki",
+              alternateName: ["塔罗琪琪", "Taro Kiki"],
               url: "https://singer-tarokiki.github.io",
               genre: ["Pop", "R&B", "Jazz Ballad"],
               description:

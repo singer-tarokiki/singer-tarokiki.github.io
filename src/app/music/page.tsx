@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Music · 音乐",
-  description: "Kiki Zhang 的专辑、单曲与现场录音合集。",
+  description: "Tarokiki 的专辑、单曲与现场录音合集。",
 };
 
 type Track = {

@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Shows · 演出",
-  description: "Kiki Zhang 的演出预告、巡演排期与往期现场。",
+  description: "Tarokiki 的演出预告、巡演排期与往期现场。",
 };
 
 type Show = {

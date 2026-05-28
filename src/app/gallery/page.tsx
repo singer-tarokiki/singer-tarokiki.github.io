@@ -72,7 +72,7 @@ export default function GalleryPage() {
                 <div className="absolute inset-0 bg-ink/30" />
                 <div className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-ink/60 px-2.5 py-1 text-[10px] font-bold tracking-widest text-silver/80 uppercase backdrop-blur-sm">
                   <Camera className="h-3 w-3" />
-                  Kiki ·
+                  Tarokiki ·
                 </div>
               </div>
               <figcaption className="px-4 py-3">

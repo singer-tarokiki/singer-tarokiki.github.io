@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About · 关于",
-  description: "Kiki Zhang —— 关于这位歌手、她的声音与她想说的话。",
+  description: "Tarokiki —— 关于这位歌手、她的声音与她想说的话。",
 };
 
 const milestones = [
@@ -67,9 +67,9 @@ export default function AboutPage() {
                 About · 关于
               </p>
               <h1 className="mb-3 font-heading text-4xl font-bold text-cantarella md:text-5xl">
-                Kiki Zhang
+                Tarokiki
               </h1>
-              <p className="mb-1 font-display text-2xl text-moon">张塔罗</p>
+              <p className="mb-1 font-display text-2xl text-moon">塔罗琪琪</p>
               <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-silver/75">
                 <li className="flex items-center gap-1.5"><MapPin className="h-4 w-4 text-rose-light" /> 上海 · Shanghai</li>
                 <li className="flex items-center gap-1.5"><Music2 className="h-4 w-4 text-rose-light" /> Vocalist / Songwriter</li>
@@ -87,7 +87,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-5 font-display text-lg leading-relaxed text-silver/85">
             <p>
-              Kiki Zhang，独立歌手，以塔罗（Taro）为艺名。
+              Tarokiki，独立歌手，以"塔罗琪琪"为艺名。
               偏爱夜的颜色 —— 那种被路灯染上一点紫的、有重量的黑。
             </p>
             <p>

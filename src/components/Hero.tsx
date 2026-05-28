@@ -27,9 +27,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="mb-4 font-heading text-6xl font-bold leading-[1.05] tracking-tight sm:text-7xl md:text-8xl"
             >
-              <span className="block text-cantarella">Kiki Zhang</span>
+              <span className="block text-cantarella">Tarokiki</span>
               <span className="mt-2 block text-2xl font-normal tracking-[0.4em] text-silver/80 sm:text-3xl">
-                张 · 塔 · 罗
+                塔 · 罗 · 琪 · 琪
               </span>
             </motion.h1>
 
@@ -115,7 +115,7 @@ export function Hero() {
                   </svg>
                 </div>
                 {/* 若放入实际照片，可替换为：
-                    <Image src="/images/portrait.jpg" alt="Kiki" fill className="object-cover" priority />
+                    <Image src="/images/portrait.jpg" alt="Tarokiki" fill className="object-cover" priority />
                 */}
               </div>
             </motion.div>
