@@ -96,7 +96,7 @@ public/
 2. **Source** 选择 `GitHub Actions`
 
 之后每次 `git push origin main`，几分钟后即可在
-`https://tarokiki.github.io` 看到最新版本。
+`https://singer-tarokiki.github.io` 看到最新版本。
 
 ---
 

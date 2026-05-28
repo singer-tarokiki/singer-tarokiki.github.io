@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://tarokiki.github.io/sitemap.xml
+Sitemap: https://singer-tarokiki.github.io/sitemap.xml

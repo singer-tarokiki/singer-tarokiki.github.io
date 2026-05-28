@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "Kiki Zhang",
     "塔罗",
     "tarokiki",
+    "singer-tarokiki",
     "独立歌手",
     "Independent Vocalist",
     "中文流行",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Kiki Zhang" }],
   creator: "Kiki Zhang",
   publisher: "Kiki Zhang",
-  metadataBase: new URL("https://tarokiki.github.io"),
+  metadataBase: new URL("https://singer-tarokiki.github.io"),
   alternates: {
     canonical: "/",
   },
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "zh_CN",
-    url: "https://tarokiki.github.io",
+    url: "https://singer-tarokiki.github.io",
     title: "Kiki Zhang · 张塔罗 — Independent Vocalist",
     description:
       "独立歌手 Kiki Zhang —— 在午夜与晨曦的缝隙里歌唱。最新单曲《Velvet Midnight》上线中。",
@@ -58,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
-        <link rel="canonical" href="https://tarokiki.github.io" />
+        <link rel="canonical" href="https://singer-tarokiki.github.io" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -67,7 +68,7 @@ export default function RootLayout({
               "@type": "MusicGroup",
               name: "Kiki Zhang",
               alternateName: ["张塔罗", "Kiki · Taro"],
-              url: "https://tarokiki.github.io",
+              url: "https://singer-tarokiki.github.io",
               genre: ["Pop", "R&B", "Jazz Ballad"],
               description:
                 "Independent vocalist singing in the seam between midnight and dawn.",
