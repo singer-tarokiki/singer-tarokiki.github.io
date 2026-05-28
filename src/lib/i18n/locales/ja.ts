@@ -1,6 +1,6 @@
 export const ja = {
   meta: {
-    title: 'Tarokiki · タロキキ',
+    title: 'Tarokiki',
     tagline: '『鳴潮』ボーカリスト · Independent Vocalist',
     description:
       'Tarokiki公式サイト —— 『鳴潮 (Wuthering Waves)』をはじめとする歌唱作品、リリース、ライブ情報、ストーリー。',
@@ -13,9 +13,9 @@ export const ja = {
     about: 'プロフィール',
   },
   home: {
-    eyebrow: 'Issue №01 · 序章',
+    eyebrow: '· 声のひと束 ·',
     name: 'Tarokiki',
-    subtitle: 'タロキキ',
+    subtitle: '',
     leadLine: '街の静けさを、『鳴潮』の夜へ。',
     leadSecondary:
       'Kuro Gamesのオープンワールド ARPG『鳴潮 (Wuthering Waves)』に歌声を寄せる独立系ボーカリスト —— 物語にも、キャラクターにも、深夜の街にも記憶される声。',

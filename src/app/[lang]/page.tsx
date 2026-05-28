@@ -4,8 +4,8 @@ import { getDictionary } from '@/lib/i18n/dictionaries';
 import { locales, type Locale, isLocale } from '@/lib/i18n/config';
 import { notFound } from 'next/navigation';
 import { songs, featuredSong } from '@/lib/data/songs';
-import { profile } from '@/lib/data/profile';
-import { StarTrail } from '@/components/StarTrail';
+import { Starfield } from '@/components/Starfield';
+import { SparkleIcon } from '@/components/SparkleIcon';
 import { PaperPlane } from '@/components/PaperPlane';
 
 export function generateStaticParams() {
@@ -23,98 +23,118 @@ export default async function Home({
   const dict = getDictionary(locale);
 
   const sections = [
-    { href: `/${locale}/music`, label: dict.nav.music, num: '01' },
-    { href: `/${locale}/shows`, label: dict.nav.shows, num: '02' },
-    { href: `/${locale}/gallery`, label: dict.nav.gallery, num: '03' },
-    { href: `/${locale}/about`, label: dict.nav.about, num: '04' },
+    { href: `/${locale}/music`, label: dict.nav.music, hue: 'from-[var(--color-rose)] to-[var(--color-rose-soft)]', emoji: '♪' },
+    { href: `/${locale}/shows`, label: dict.nav.shows, hue: 'from-[var(--color-violet)] to-[var(--color-violet-soft)]', emoji: '✦' },
+    { href: `/${locale}/gallery`, label: dict.nav.gallery, hue: 'from-[var(--color-sky)] to-[var(--color-blush)]', emoji: '✿' },
+    { href: `/${locale}/about`, label: dict.nav.about, hue: 'from-[var(--color-gold)] to-[var(--color-rose-soft)]', emoji: '✦' },
   ];
 
   return (
-    <main>
-      {/* —— Editorial cover —— */}
-      <section className="relative overflow-hidden">
-        {/* Soft star trail in upper area */}
-        <div className="pointer-events-none absolute right-[-4rem] top-16 opacity-60 md:right-0 md:top-24">
-          <StarTrail width={520} height={140} />
-        </div>
+    <main className="px-4 md:px-8">
+      <div className="mx-auto max-w-[1200px]">
+        {/* —— Hero —— */}
+        <section className="relative mt-6 overflow-hidden rounded-[3rem] glass-card-warm">
+          <Starfield className="opacity-90" shootingStar />
 
-        <div className="mx-auto max-w-[1280px] px-6 md:px-10 pt-20 pb-28 md:pt-32 md:pb-40">
-          {/* Eyebrow + paper plane */}
-          <div className="flex items-center gap-3 fade-up">
-            <PaperPlane size={14} className="text-[var(--color-violet)]" />
-            <span className="eyebrow">{dict.home.eyebrow}</span>
-          </div>
+          <div className="relative px-6 md:px-16 pt-20 pb-28 md:pt-32 md:pb-40 text-center">
+            {/* eyebrow */}
+            <p
+              className="eyebrow inline-flex items-center gap-2 fade-up"
+              style={{ animationDelay: '0.05s' }}
+            >
+              <SparkleIcon size={12} className="text-[var(--color-rose)]" />
+              {dict.home.eyebrow}
+              <SparkleIcon size={12} className="text-[var(--color-rose)]" />
+            </p>
 
-          {/* Masthead name */}
-          <h1
-            className="mt-8 font-display font-light tracking-[-0.02em] text-[var(--color-text)] leading-[0.95] fade-up"
-            style={{ animationDelay: '0.05s' }}
-          >
-            <span className="block text-[clamp(4rem,12vw,11rem)]">{dict.home.name}</span>
-            <span className="mt-3 block text-[clamp(1.1rem,2vw,1.6rem)] tracking-[0.18em] text-[var(--color-text-soft)] italic">
-              {dict.home.subtitle}
-            </span>
-          </h1>
+            {/* big name */}
+            <h1
+              className="mt-6 font-display font-medium tracking-tight leading-[0.95] fade-up"
+              style={{ animationDelay: '0.12s' }}
+            >
+              <span className="block text-dream text-[clamp(4.5rem,14vw,12rem)]">
+                Tarokiki
+              </span>
+            </h1>
 
-          {/* Lead paragraph — two-column editorial */}
-          <div
-            className="mt-16 grid gap-10 md:mt-24 md:grid-cols-12 fade-up"
-            style={{ animationDelay: '0.15s' }}
-          >
-            <p className="md:col-span-5 font-display text-3xl md:text-4xl leading-[1.25] text-[var(--color-text)]">
+            {/* lead */}
+            <p
+              className="mx-auto mt-10 max-w-2xl font-display italic text-2xl md:text-3xl text-[var(--color-ink)] leading-snug fade-up"
+              style={{ animationDelay: '0.22s' }}
+            >
               {dict.home.leadLine}
             </p>
-            <p className="md:col-span-6 md:col-start-7 text-base md:text-[17px] leading-relaxed text-[var(--color-text-soft)] max-w-prose">
+            <p
+              className="mx-auto mt-6 max-w-xl text-base md:text-[17px] leading-relaxed text-[var(--color-ink-soft)] fade-up"
+              style={{ animationDelay: '0.32s' }}
+            >
               {dict.home.leadSecondary}
             </p>
+
+            {/* CTAs */}
+            <div
+              className="mt-12 flex flex-wrap items-center justify-center gap-4 fade-up"
+              style={{ animationDelay: '0.42s' }}
+            >
+              <Link
+                href={`/${locale}/music`}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-rose)] via-[var(--color-violet)] to-[var(--color-sky)] bg-[length:200%_100%] bg-left px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_-10px_rgba(232,164,189,0.65)] transition-all hover:bg-right hover:shadow-[0_12px_36px_-10px_rgba(184,154,196,0.55)]"
+              >
+                {dict.home.featuredCta} <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href={`/${locale}/about`}
+                className="group inline-flex items-center gap-2 rounded-full bg-white/70 px-7 py-3.5 text-sm font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-[0_8px_20px_-10px_rgba(184,154,196,0.45)] transition-all"
+              >
+                {dict.nav.about}
+              </Link>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="hairline-violet mx-auto max-w-[1280px]" />
-      </section>
-
-      {/* —— Featured Track —— */}
-      <section className="mx-auto max-w-[1280px] px-6 md:px-10 py-24 md:py-32">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <p className="eyebrow mb-6">{dict.home.featuredEyebrow}</p>
-            <h2 className="font-display text-5xl md:text-6xl text-[var(--color-text)] leading-[1.05]">
+        {/* —— Featured track —— */}
+        <section className="mt-24 md:mt-32 grid gap-10 md:grid-cols-12 md:gap-12 items-center">
+          <div className="md:col-span-5">
+            <p className="script text-2xl text-[var(--color-rose)] mb-3">
+              {dict.home.featuredEyebrow.split('·')[0].trim()}
+            </p>
+            <h2 className="font-display text-5xl md:text-6xl text-[var(--color-ink)] leading-tight">
               {featuredSong.title[locale]}
             </h2>
-            <p className="mt-3 font-display italic text-[var(--color-text-soft)] text-lg">
-              {featuredSong.title.en !== featuredSong.title[locale] && featuredSong.title.en}
-            </p>
+            {featuredSong.title.en !== featuredSong.title[locale] && (
+              <p className="mt-2 font-display italic text-xl text-[var(--color-ink-soft)]">
+                {featuredSong.title.en}
+              </p>
+            )}
           </div>
 
-          <div className="md:col-span-7 md:col-start-6 flex flex-col gap-6">
-            <p className="text-base md:text-lg leading-relaxed text-[var(--color-text-soft)]">
+          <div className="md:col-span-7 glass-card rounded-[2.5rem] p-7 md:p-10 relative overflow-hidden">
+            {/* corner sparkle */}
+            <SparkleIcon size={36} className="absolute top-6 right-6 text-[var(--color-rose-soft)] drift" />
+
+            <p className="text-base md:text-lg leading-relaxed text-[var(--color-ink-soft)]">
               {featuredSong.release[locale]}
               {featuredSong.collaborators && featuredSong.collaborators.length > 0 && (
-                <>
-                  {' · '}
-                  <span className="text-[var(--color-text-mute)]">
-                    with {featuredSong.collaborators.join(', ')}
-                  </span>
-                </>
+                <span className="text-[var(--color-ink-mute)]">
+                  {' '}· with {featuredSong.collaborators.join(', ')}
+                </span>
               )}
             </p>
-            <p className="text-sm uppercase tracking-[0.25em] text-[var(--color-text-mute)]">
-              {dict.music.related} —{' '}
-              <span className="text-[var(--color-text-soft)] normal-case tracking-normal">
-                {featuredSong.related[locale]}
-              </span>
-            </p>
 
-            <div className="flex flex-wrap gap-x-6 gap-y-2 mt-2">
+            <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-[var(--color-blush)] px-4 py-1.5 text-xs font-semibold text-[var(--color-ink)]">
+              <SparkleIcon size={11} className="text-[var(--color-rose)]" />
+              {featuredSong.related[locale]}
+            </div>
+
+            <div className="mt-7 flex flex-wrap gap-3">
               {featuredSong.links?.spotify && (
                 <Link
                   href={featuredSong.links.spotify}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-1.5 text-sm text-[var(--color-text)] link-underline"
+                  className="rounded-full bg-white/80 px-5 py-2 text-xs font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-md transition-all"
                 >
-                  Spotify
-                  <ArrowUpRight className="h-3.5 w-3.5 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  Spotify ↗
                 </Link>
               )}
               {featuredSong.links?.youtube && (
@@ -122,10 +142,9 @@ export default async function Home({
                   href={featuredSong.links.youtube}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-1.5 text-sm text-[var(--color-text)] link-underline"
+                  className="rounded-full bg-white/80 px-5 py-2 text-xs font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-md transition-all"
                 >
-                  YouTube
-                  <ArrowUpRight className="h-3.5 w-3.5 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  YouTube ↗
                 </Link>
               )}
               {featuredSong.links?.appleMusic && (
@@ -133,63 +152,68 @@ export default async function Home({
                   href={featuredSong.links.appleMusic}
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex items-center gap-1.5 text-sm text-[var(--color-text)] link-underline"
+                  className="rounded-full bg-white/80 px-5 py-2 text-xs font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-md transition-all"
                 >
-                  Apple Music
-                  <ArrowUpRight className="h-3.5 w-3.5 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  Apple Music ↗
                 </Link>
               )}
             </div>
 
             <Link
               href={`/${locale}/music`}
-              className="mt-6 inline-flex items-center gap-3 self-start text-xs tracking-[0.3em] uppercase text-[var(--color-violet)] hover:text-[var(--color-text)] transition-colors"
+              className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-rose)] hover:text-[var(--color-ink)] transition-colors link-soft"
             >
-              <span className="h-px w-8 bg-current" />
-              {dict.home.featuredCta}
-              <span className="h-px w-8 bg-current" />
+              See all songs <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div className="hairline mx-auto max-w-[1280px]" />
-
-      {/* —— In This Issue —— */}
-      <section className="mx-auto max-w-[1280px] px-6 md:px-10 py-24 md:py-32">
-        <p className="eyebrow mb-12">{dict.home.sectionsEyebrow}</p>
-        <div className="grid gap-y-3 md:grid-cols-2 md:gap-x-16">
-          {sections.map((s) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              className="group flex items-baseline justify-between gap-4 py-6 border-b border-[var(--color-line)] hover:border-[var(--color-violet)] transition-colors"
-            >
-              <span className="flex items-baseline gap-6">
-                <span className="font-display text-sm text-[var(--color-text-mute)] tabular-nums">
-                  {s.num}
+        {/* —— In this issue (rounded soft tiles) —— */}
+        <section className="mt-24 md:mt-32">
+          <p className="text-center script text-2xl text-[var(--color-rose)] mb-10">
+            {dict.home.sectionsEyebrow.split('·')[0].trim()}
+          </p>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {sections.map((s, i) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className={
+                  'group relative overflow-hidden rounded-[2rem] p-7 transition-all hover:-translate-y-1 hover:shadow-[0_24px_50px_-20px_rgba(184,154,196,0.4)] ' +
+                  'bg-gradient-to-br ' + s.hue
+                }
+                style={{ minHeight: '170px' }}
+              >
+                <span className="absolute top-4 right-4 text-3xl text-white/70 group-hover:text-white transition-colors drift">
+                  {s.emoji}
                 </span>
-                <span className="font-display text-2xl md:text-3xl text-[var(--color-text)] tracking-tight">
+                <span className="absolute bottom-4 left-6 font-display text-3xl text-white drop-shadow-sm">
                   {s.label}
                 </span>
-              </span>
-              <ArrowUpRight className="h-4 w-4 text-[var(--color-text-mute)] group-hover:text-[var(--color-violet)] transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
-          ))}
-        </div>
-      </section>
+                <ArrowUpRight className="absolute bottom-4 right-4 h-5 w-5 text-white/80 group-hover:text-white transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+          </div>
+        </section>
 
-      {/* —— Closing quote —— */}
-      <section className="mx-auto max-w-[1280px] px-6 md:px-10 py-24 md:py-32">
-        <blockquote className="mx-auto max-w-3xl text-center">
-          <p className="font-display italic text-3xl md:text-5xl text-[var(--color-text)] leading-[1.25]">
-            {dict.home.quote}
-          </p>
-          <footer className="mt-8 text-xs tracking-[0.4em] uppercase text-[var(--color-text-mute)]">
-            — Tarokiki
-          </footer>
-        </blockquote>
-      </section>
+        {/* —— Quote —— */}
+        <section className="mt-24 md:mt-32 mb-16">
+          <div className="relative glass-card-warm rounded-[2.5rem] px-8 md:px-16 py-16 md:py-24 text-center overflow-hidden">
+            <PaperPlane size={36} className="absolute top-8 left-8 text-[var(--color-violet-soft)] drift-slow" />
+            <PaperPlane size={28} className="absolute bottom-8 right-10 text-[var(--color-rose-soft)] drift" />
+            <SparkleIcon size={20} className="absolute top-12 right-12 text-[var(--color-gold)] twinkle" />
+
+            <blockquote>
+              <p className="font-display italic text-3xl md:text-5xl text-[var(--color-ink)] leading-[1.3] max-w-3xl mx-auto">
+                {dict.home.quote}
+              </p>
+              <footer className="mt-8 script text-2xl text-[var(--color-rose)]">
+                — Tarokiki
+              </footer>
+            </blockquote>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

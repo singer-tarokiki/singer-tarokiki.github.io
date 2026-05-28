@@ -13,9 +13,9 @@ export const en = {
     about: 'About',
   },
   home: {
-    eyebrow: 'Issue №01 · Overture',
+    eyebrow: '· a bundle of voice ·',
     name: 'Tarokiki',
-    subtitle: 'A voice from the night between cities.',
+    subtitle: '',
     leadLine: 'A quiet city, folded into the sound of Wuthering Waves.',
     leadSecondary:
       'Independent vocalist lending her voice to the open-world ARPG Wuthering Waves (鸣潮) by Kuro Games — a voice that the story, the characters and the late-night city all remember at once.',

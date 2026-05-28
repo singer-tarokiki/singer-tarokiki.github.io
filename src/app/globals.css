@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..700&family=Noto+Serif+SC:wght@300..900&family=Noto+Serif+JP:wght@300..900&family=Noto+Serif+KR:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&family=Caveat:wght@400..700&family=Noto+Sans+SC:wght@300..700&family=Noto+Sans+JP:wght@300..700&family=Noto+Sans+KR:wght@300..700&display=swap');
 @import "tailwindcss";
 
 @tailwind base;
@@ -7,40 +7,41 @@
 
 @layer base {
   :root {
-    /* Editorial palette — Cantarella-derived, restrained */
-    --color-ink: #100A1A;          /* page ground, near-black violet */
-    --color-ink-elev: #1A1226;     /* card / panel ground */
-    --color-line: #2A2036;         /* hairline separator */
-    --color-text: #F4ECEF;         /* primary text, moonlit */
-    --color-text-soft: #B7A8C0;    /* secondary text */
-    --color-text-mute: #6D6477;    /* tertiary / captions */
-    --color-violet: #9D7DCC;       /* signature accent — muted amethyst (Cantarella) */
-    --color-indigo: #5A6BB8;       /* deep indigo — Amis "indigo universe" */
-    --color-aqua: #7FB5BF;         /* eggshell aqua — paper-plane horizon */
-    --color-rose: #D08AA1;         /* whisper warmth, used sparingly */
-    --color-gold: #D9C49C;         /* tarnished gold trim, rare */
+    /* Light & dreamy palette — cream-rose canvas, soft violet accents, sky-aqua highlights */
+    --color-cream: #FFF7F2;        /* warm cream — page ground */
+    --color-blush: #FCEEF2;        /* blush pink — secondary surface */
+    --color-veil:  #F7EEF5;        /* lavender veil — third surface */
+    --color-card:  #FFFFFF;        /* pure white cards */
+    --color-ink:   #3D2A4D;        /* deep violet — primary text */
+    --color-ink-soft: #7E6C8C;     /* dusty mauve — secondary text */
+    --color-ink-mute: #B5A6BD;     /* mist mauve — tertiary text */
+    --color-rose:  #E8A4BD;        /* romantic rose — main accent */
+    --color-rose-soft: #F4CCD7;    /* soft petal pink */
+    --color-violet: #B89AC4;       /* mint amethyst — secondary accent */
+    --color-violet-soft: #DCC9E5;  /* lavender mist */
+    --color-sky:   #B4D4E0;        /* sky aqua — paper-plane horizon */
+    --color-gold:  #E8C898;        /* warm gold trim */
+    --color-line:  #EFE4EB;        /* soft hairline */
 
-    --font-display: 'Cormorant Garamond', 'Noto Serif SC', 'Noto Serif JP', 'Noto Serif KR', serif;
-    --font-body: 'Inter', system-ui, sans-serif;
-    --font-zh: 'Noto Serif SC', serif;
-    --font-ja: 'Noto Serif JP', serif;
-    --font-ko: 'Noto Serif KR', serif;
+    --font-display: 'Playfair Display', 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', serif;
+    --font-script:  'Caveat', 'Playfair Display', serif;
+    --font-body:    'Quicksand', 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans KR', system-ui, sans-serif;
 
-    --background: var(--color-ink);
-    --foreground: var(--color-text);
+    --background: var(--color-cream);
+    --foreground: var(--color-ink);
   }
 
   body {
     font-family: var(--font-body);
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.005em;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    letter-spacing: -0.005em;
   }
 }
 
@@ -48,81 +49,153 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  --color-cream: var(--color-cream);
+  --color-blush: var(--color-blush);
+  --color-veil: var(--color-veil);
+  --color-card: var(--color-card);
   --color-ink: var(--color-ink);
-  --color-ink-elev: var(--color-ink-elev);
-  --color-line: var(--color-line);
-  --color-text: var(--color-text);
-  --color-text-soft: var(--color-text-soft);
-  --color-text-mute: var(--color-text-mute);
-  --color-violet: var(--color-violet);
-  --color-indigo: var(--color-indigo);
-  --color-aqua: var(--color-aqua);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-mute: var(--color-ink-mute);
   --color-rose: var(--color-rose);
+  --color-rose-soft: var(--color-rose-soft);
+  --color-violet: var(--color-violet);
+  --color-violet-soft: var(--color-violet-soft);
+  --color-sky: var(--color-sky);
   --color-gold: var(--color-gold);
+  --color-line: var(--color-line);
 
   --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-script:  var(--font-script);
+  --font-body:    var(--font-body);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   background-image:
-    radial-gradient(ellipse 70% 60% at 18% -10%, rgba(157, 125, 204, 0.16), transparent 70%),
-    radial-gradient(ellipse 60% 50% at 88% 12%, rgba(90, 107, 184, 0.12), transparent 65%),
-    radial-gradient(ellipse 50% 40% at 60% 95%, rgba(127, 181, 191, 0.08), transparent 70%);
+    radial-gradient(ellipse 100% 60% at 15% 0%,  rgba(232, 164, 189, 0.35), transparent 65%),
+    radial-gradient(ellipse 80% 50% at 90% 5%,   rgba(184, 154, 196, 0.32), transparent 65%),
+    radial-gradient(ellipse 70% 55% at 50% 100%, rgba(180, 212, 224, 0.28), transparent 65%);
   background-attachment: fixed;
 }
 
-/* ---------- editorial primitives ---------- */
+/* ---------- primitives ---------- */
 
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--color-text-mute);
+  font-family: var(--font-script);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--color-rose);
 }
 
-.display-script {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 300;
+.script {
+  font-family: var(--font-script);
+  font-weight: 500;
 }
 
 .hairline {
   height: 1px;
-  background-color: var(--color-line);
+  background: linear-gradient(90deg, transparent, var(--color-line) 20%, var(--color-line) 80%, transparent);
 }
 
-.hairline-violet {
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 10px 30px -10px rgba(184, 154, 196, 0.25),
+    0 4px 14px -6px rgba(232, 164, 189, 0.18);
+}
+
+.glass-card-warm {
+  background: linear-gradient(135deg, rgba(255, 247, 242, 0.85), rgba(252, 238, 242, 0.75));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 36px -14px rgba(184, 154, 196, 0.30);
+}
+
+/* gradient text — used for the Tarokiki name */
+.text-dream {
+  background-image: linear-gradient(120deg, #B89AC4 0%, #E8A4BD 45%, #E8C898 75%, #B4D4E0 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-text 12s ease-in-out infinite;
+}
+
+@keyframes shimmer-text {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* underline-on-hover for soft links */
+.link-soft {
+  position: relative;
+}
+.link-soft::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-violet), transparent);
-  opacity: 0.55;
+  background: currentColor;
+  transform-origin: right center;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.link-soft:hover::after {
+  transform-origin: left center;
+  transform: scaleX(1);
 }
 
-/* underline-on-hover for editorial links */
-.link-underline {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 100% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.4s ease;
-}
-.link-underline:hover {
-  background-size: 0% 1px;
-}
+/* ---------- celestial animations ---------- */
 
-/* one slow fade we allow ourselves */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50%      { opacity: 1;    transform: scale(1.1); }
+}
+.twinkle { animation: twinkle 3.6s ease-in-out infinite; }
+
+@keyframes drift-up {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
+}
+.drift { animation: drift-up 9s ease-in-out infinite; }
+
+@keyframes drift-slow {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(8px, -10px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+.drift-slow { animation: drift-slow 14s ease-in-out infinite; }
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 164, 189, 0); }
+  50%      { box-shadow: 0 0 40px 0 rgba(232, 164, 189, 0.45); }
+}
+.glow { animation: glow-pulse 5s ease-in-out infinite; }
+
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.fade-up { animation: fade-up 0.8s ease-out both; }
+.fade-up { animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
-/* very subtle pulse on the masthead violet dot */
-@keyframes breathe {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 1; }
+@keyframes shooting-star {
+  0%   { transform: translate(-10vw, 30vh) rotate(-25deg); opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: translate(110vw, -10vh) rotate(-25deg); opacity: 0; }
 }
-.breathe { animation: breathe 4s ease-in-out infinite; }
+.shooting { animation: shooting-star 12s linear infinite; }
+
+/* Soft selection */
+::selection {
+  background-color: var(--color-rose-soft);
+  color: var(--color-ink);
+}

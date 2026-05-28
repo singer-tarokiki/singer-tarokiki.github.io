@@ -1,6 +1,6 @@
 export const ko = {
   meta: {
-    title: 'Tarokiki · 타로키키',
+    title: 'Tarokiki',
     tagline: '《명조》보컬리스트 · Independent Vocalist',
     description:
       'Tarokiki 공식 웹사이트 —— 《명조 (Wuthering Waves)》를 비롯한 보컬 작품, 릴리즈, 공연, 이야기.',
@@ -13,9 +13,9 @@ export const ko = {
     about: '프로필',
   },
   home: {
-    eyebrow: 'Issue №01 · 서곡',
+    eyebrow: '· 한 다발의 목소리 ·',
     name: 'Tarokiki',
-    subtitle: '타로키키',
+    subtitle: '',
     leadLine: '도시의 고요를, 《명조》의 밤 속으로.',
     leadSecondary:
       'Kuro Games의 오픈월드 ARPG 《명조 (Wuthering Waves)》에 목소리를 더한 인디 보컬리스트 —— 이야기와 캐릭터, 그리고 깊은 밤의 도시가 동시에 기억하는 목소리.',

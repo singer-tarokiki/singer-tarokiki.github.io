@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { locales, type Locale, isLocale } from '@/lib/i18n/config';
 import { notFound } from 'next/navigation';
+import { SparkleIcon } from '@/components/SparkleIcon';
+import { Starfield } from '@/components/Starfield';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -36,44 +38,48 @@ export default async function ShowsPage({
   const dict = getDictionary(locale);
 
   return (
-    <main>
-      <section className="mx-auto max-w-[1280px] px-6 md:px-10 pt-20 pb-12 md:pt-32 md:pb-20">
-        <p className="eyebrow mb-6">{dict.shows.eyebrow}</p>
-        <div className="grid gap-10 md:grid-cols-12">
-          <h1 className="md:col-span-7 font-display text-6xl md:text-7xl lg:text-8xl text-[var(--color-text)] leading-[0.95]">
-            {dict.shows.title}
-          </h1>
-          <p className="md:col-span-4 md:col-start-9 text-base leading-relaxed text-[var(--color-text-soft)]">
-            {dict.shows.lede}
-          </p>
-        </div>
-      </section>
+    <main className="px-4 md:px-8">
+      <div className="mx-auto max-w-[1200px]">
+        {/* header */}
+        <section className="relative mt-6 overflow-hidden rounded-[3rem] glass-card-warm">
+          <Starfield className="opacity-70" />
+          <div className="relative px-6 md:px-16 py-20 md:py-28 text-center">
+            <p className="eyebrow inline-flex items-center gap-2">
+              <SparkleIcon size={12} className="text-[var(--color-rose)]" />
+              {dict.shows.eyebrow.split('·')[0].trim()}
+              <SparkleIcon size={12} className="text-[var(--color-rose)]" />
+            </p>
+            <h1 className="mt-6 font-display text-6xl md:text-7xl lg:text-8xl text-dream font-medium leading-[0.95] tracking-tight">
+              {dict.shows.title}
+            </h1>
+            <p className="mx-auto mt-7 max-w-2xl text-base md:text-lg leading-relaxed text-[var(--color-ink-soft)]">
+              {dict.shows.lede}
+            </p>
+          </div>
+        </section>
 
-      <div className="hairline-violet mx-auto max-w-[1280px]" />
-
-      {/* Upcoming */}
-      <section className="mx-auto max-w-[1280px] px-6 md:px-10 py-16 md:py-24">
-        <h2 className="font-display text-3xl md:text-4xl text-[var(--color-text)] mb-10">
-          {dict.shows.upcoming}
-        </h2>
-        <div className="border-y border-[var(--color-line)] py-16 text-center">
-          <p className="font-display italic text-xl text-[var(--color-text-soft)] max-w-xl mx-auto">
-            {emptyState[locale]}
-          </p>
-        </div>
-      </section>
-
-      {/* Past */}
-      <section className="mx-auto max-w-[1280px] px-6 md:px-10 pb-20 md:pb-32">
-        <h2 className="font-display text-3xl md:text-4xl text-[var(--color-text)] mb-10">
-          {dict.shows.past}
-        </h2>
-        <div className="border-y border-[var(--color-line)] py-16 text-center">
-          <p className="font-display italic text-xl text-[var(--color-text-soft)] max-w-xl mx-auto">
-            {emptyState[locale]}
-          </p>
-        </div>
-      </section>
+        {/* empty state — soft cards */}
+        <section className="mt-16 md:mt-24 grid gap-6 md:grid-cols-2">
+          <div className="rounded-[2rem] p-10 md:p-14 text-center glass-card-warm">
+            <SparkleIcon size={32} className="mx-auto text-[var(--color-rose)] twinkle" />
+            <h2 className="mt-4 font-display text-3xl md:text-4xl text-[var(--color-ink)]">
+              {dict.shows.upcoming}
+            </h2>
+            <p className="mt-6 font-display italic text-lg text-[var(--color-ink-soft)] leading-relaxed">
+              {emptyState[locale]}
+            </p>
+          </div>
+          <div className="rounded-[2rem] p-10 md:p-14 text-center bg-gradient-to-br from-[var(--color-veil)] to-[var(--color-blush)]">
+            <SparkleIcon size={32} className="mx-auto text-[var(--color-violet)] twinkle" style={{ animationDelay: '0.8s' } as React.CSSProperties} />
+            <h2 className="mt-4 font-display text-3xl md:text-4xl text-[var(--color-ink)]">
+              {dict.shows.past}
+            </h2>
+            <p className="mt-6 font-display italic text-lg text-[var(--color-ink-soft)] leading-relaxed">
+              {emptyState[locale]}
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

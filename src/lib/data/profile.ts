@@ -3,11 +3,6 @@
 
 export const profile = {
   stageName: 'Tarokiki',
-  altNames: {
-    zh: '塔罗琪琪',
-    ja: 'タロキキ',
-    ko: '타로키키',
-  },
   selfDescription: 'Singer, songwriter, sometimes a jazz cat.', // Instagram bio
   basedIn: {
     zh: '日本东京',
@@ -38,7 +33,7 @@ export const profile = {
   email: 'hello@tarokiki.com', // placeholder — replace with real contact
 } as const;
 
-export type ProfileLocale = keyof typeof profile.altNames | 'en';
+export type ProfileLocale = 'zh' | 'en' | 'ja' | 'ko';
 
 export const bio = {
   zh: [

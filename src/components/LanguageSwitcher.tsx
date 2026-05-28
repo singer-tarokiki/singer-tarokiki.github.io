@@ -11,35 +11,34 @@ interface Props {
 export function LanguageSwitcher({ current }: Props) {
   const pathname = usePathname() ?? `/${current}`;
   const segments = pathname.split('/').filter(Boolean);
-  // Strip the existing locale segment (if any) to get the inner path
   const rest = segments.length > 0 && isLocale(segments[0])
     ? segments.slice(1).join('/')
     : segments.join('/');
 
   return (
-    <div className="flex items-baseline gap-px" role="navigation" aria-label="Language">
-      {locales.map((loc, i) => {
+    <div
+      className="inline-flex items-center rounded-full bg-white/60 px-1 py-0.5 shadow-[0_2px_8px_-4px_rgba(184,154,196,0.25)]"
+      role="navigation"
+      aria-label="Language"
+    >
+      {locales.map((loc) => {
         const href = '/' + [loc, rest].filter(Boolean).join('/');
         const isActive = loc === current;
         return (
-          <span key={loc} className="flex items-baseline gap-px">
-            <Link
-              href={href}
-              hrefLang={loc}
-              className={
-                'px-2 py-0.5 text-[11px] tracking-[0.22em] uppercase transition-colors ' +
-                (isActive
-                  ? 'text-[var(--color-text)]'
-                  : 'text-[var(--color-text-mute)] hover:text-[var(--color-text-soft)]')
-              }
-              aria-current={isActive ? 'page' : undefined}
-            >
-              {localeLabels[loc].short}
-            </Link>
-            {i < locales.length - 1 && (
-              <span className="text-[var(--color-text-mute)]/40 text-[10px]">·</span>
-            )}
-          </span>
+          <Link
+            key={loc}
+            href={href}
+            hrefLang={loc}
+            aria-current={isActive ? 'page' : undefined}
+            className={
+              'rounded-full px-2.5 py-1 text-[11px] font-semibold tracking-wider transition-all ' +
+              (isActive
+                ? 'bg-gradient-to-r from-[var(--color-rose)] to-[var(--color-violet)] text-white shadow-sm'
+                : 'text-[var(--color-ink-mute)] hover:text-[var(--color-ink-soft)]')
+            }
+          >
+            {localeLabels[loc].short}
+          </Link>
         );
       })}
     </div>

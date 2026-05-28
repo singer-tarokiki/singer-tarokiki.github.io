@@ -1,6 +1,6 @@
 export const zh = {
   meta: {
-    title: 'Tarokiki · 塔罗琪琪',
+    title: 'Tarokiki',
     tagline: '《鸣潮》声乐演绎者 · Independent Vocalist',
     description:
       'Tarokiki 的官方网站 —— 收录《鸣潮》及更多作品中的声乐演绎、专辑、演出与故事。',
@@ -13,9 +13,9 @@ export const zh = {
     about: '关于',
   },
   home: {
-    eyebrow: 'Issue №01 · 序曲',
+    eyebrow: '· 一束声音 ·',
     name: 'Tarokiki',
-    subtitle: '塔罗琪琪',
+    subtitle: '',
     leadLine: '把整座城市的安静，唱进《鸣潮》的夜里。',
     leadSecondary:
       '为开放世界 ARPG《鸣潮 (Wuthering Waves)》提供声乐演绎的独立歌手 —— 她的声音被剧情、被角色、被深夜的城市同时记住。',
