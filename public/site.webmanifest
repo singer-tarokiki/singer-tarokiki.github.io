@@ -1,14 +1,10 @@
 {
-  "name": "Tarokiki · Independent Vocalist",
+  "name": "Tarokiki · Vocalist for Wuthering Waves",
   "short_name": "Tarokiki",
   "icons": [
-    {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
   ],
-  "theme_color": "#0E0814",
-  "background_color": "#0E0814",
+  "theme_color": "#100A1A",
+  "background_color": "#100A1A",
   "display": "standalone"
 }

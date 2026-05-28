@@ -1,49 +1,30 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://singer-tarokiki.github.io"),
   title: {
-    default: "Tarokiki · 塔罗琪琪 — Independent Vocalist",
-    template: "%s | Tarokiki",
+    default: "Tarokiki · Vocalist for Wuthering Waves",
+    template: "%s · Tarokiki",
   },
   description:
-    "独立歌手 Tarokiki（塔罗琪琪）的官方网站 —— 收录最新单曲、演出预告、相册与故事。在午夜与晨曦的缝隙里歌唱。",
-  keywords: [
-    "Tarokiki",
-    "塔罗琪琪",
-    "tarokiki",
-    "singer-tarokiki",
-    "独立歌手",
-    "Independent Vocalist",
-    "中文流行",
-    "Jazz Ballad",
-    "Live Music",
-    "Singer",
-  ],
-  authors: [{ name: "Tarokiki" }],
-  creator: "Tarokiki",
-  publisher: "Tarokiki",
-  metadataBase: new URL("https://singer-tarokiki.github.io"),
-  alternates: {
-    canonical: "/",
-  },
+    "Official site of Tarokiki — independent vocalist for Wuthering Waves (鸣潮 / 鳴潮 / 명조).",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
+  alternates: {
+    canonical: "/",
+    languages: {
+      zh: "/zh",
+      en: "/en",
+      ja: "/ja",
+      ko: "/ko",
+    },
+  },
   openGraph: {
     type: "website",
-    locale: "zh_CN",
     url: "https://singer-tarokiki.github.io",
-    title: "Tarokiki · 塔罗琪琪 — Independent Vocalist",
-    description:
-      "独立歌手 Tarokiki —— 在午夜与晨曦的缝隙里歌唱。最新单曲《Velvet Midnight》上线中。",
     siteName: "Tarokiki",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Tarokiki · Independent Vocalist",
-    description: "A voice woven from velvet midnight and silver dawn.",
   },
   robots: {
     index: true,
@@ -58,33 +39,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
-      <head>
-        <link rel="canonical" href="https://singer-tarokiki.github.io" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "MusicGroup",
-              name: "Tarokiki",
-              alternateName: ["塔罗琪琪", "Taro Kiki"],
-              url: "https://singer-tarokiki.github.io",
-              genre: ["Pop", "R&B", "Jazz Ballad"],
-              description:
-                "Independent vocalist singing in the seam between midnight and dawn.",
-            }),
-          }}
-        />
-      </head>
-      <body className="antialiased" suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body className="antialiased min-h-screen flex flex-col" suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );

@@ -1,37 +1,93 @@
 import Link from 'next/link';
-import { Instagram, Youtube, Music2, Mail } from 'lucide-react';
+import { profile } from '@/lib/data/profile';
+import type { Locale } from '@/lib/i18n/config';
+import type { Dictionary } from '@/lib/i18n/dictionaries';
 
-const links = [
-  { icon: Music2, label: 'Spotify', href: '#' },
-  { icon: Youtube, label: 'YouTube', href: '#' },
-  { icon: Instagram, label: 'Instagram', href: '#' },
-  { icon: Mail, label: 'Email', href: 'mailto:hello@tarokiki.com' },
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const social: { label: string; href: string }[] = [
+  { label: 'Bilibili', href: profile.links.bilibili },
+  { label: 'Instagram', href: profile.links.instagram },
+  { label: 'Spotify', href: profile.links.spotify },
+  { label: 'Apple Music', href: profile.links.appleMusic },
+  { label: 'YouTube', href: profile.links.youtube },
+  { label: 'VGMdb', href: profile.links.vgmdb },
 ];
 
-export function Footer() {
+export function Footer({ locale, dict }: Props) {
   return (
-    <footer className="border-t border-silver/10 bg-ink/70 backdrop-blur-md">
-      <div className="container mx-auto flex flex-col items-center gap-6 px-4 py-12 md:flex-row md:justify-between">
-        <div className="text-center md:text-left">
-          <p className="font-heading text-lg font-bold tracking-[0.3em] text-cantarella">
-            TAROKIKI
-          </p>
-          <p className="mt-1 text-xs text-silver/50">
-            © {new Date().getFullYear()} Tarokiki. All songs sung under moonlight.
-          </p>
+    <footer className="mt-32 border-t border-[var(--color-line)]">
+      <div className="mx-auto max-w-[1280px] px-6 md:px-10 py-14 md:py-20">
+        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
+          {/* Masthead block */}
+          <div>
+            <p className="eyebrow mb-3">Tarokiki</p>
+            <p className="font-display text-3xl md:text-4xl text-[var(--color-text)] leading-tight">
+              {dict.footer.moonlight}
+            </p>
+            <p className="mt-4 max-w-md text-sm text-[var(--color-text-mute)] leading-relaxed">
+              {dict.meta.description}
+            </p>
+          </div>
+
+          {/* Streaming */}
+          <div>
+            <p className="eyebrow mb-4">Listen</p>
+            <ul className="space-y-2">
+              {social.slice(0, 4).map((s) => (
+                <li key={s.label}>
+                  <Link
+                    href={s.href}
+                    className="font-body text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text)] link-underline transition-colors"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social / Other */}
+          <div>
+            <p className="eyebrow mb-4">Follow</p>
+            <ul className="space-y-2">
+              {social.slice(4).map((s) => (
+                <li key={s.label}>
+                  <Link
+                    href={s.href}
+                    className="font-body text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text)] link-underline transition-colors"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href={`mailto:${profile.email}`}
+                  className="font-body text-sm text-[var(--color-text-soft)] hover:text-[var(--color-text)] link-underline transition-colors"
+                >
+                  Email
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          {links.map(({ icon: Icon, label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              aria-label={label}
-              className="group flex h-10 w-10 items-center justify-center rounded-full border border-silver/20 text-silver/70 transition-all hover:border-rose-light/60 hover:text-rose-light hover:shadow-[0_0_20px_rgba(227,106,138,0.4)]"
-            >
-              <Icon className="h-4 w-4 transition-transform group-hover:scale-110" />
-            </Link>
-          ))}
+        {/* Bottom rule */}
+        <div className="mt-14 pt-6 border-t border-[var(--color-line)] flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-[var(--color-text-mute)]">
+          <p>
+            © {new Date().getFullYear()} Tarokiki. {dict.footer.rights}.
+          </p>
+          <p className="font-display italic tracking-wide">
+            for Wuthering Waves · 鸣潮 · 鳴潮 · 명조
+          </p>
         </div>
       </div>
     </footer>

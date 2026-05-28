@@ -1,15 +1,27 @@
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { Footer } from "@/components/Footer";
+// Root path — bounce to default locale (中文).
+// We can't use redirect() under static export, so render a minimal HTML page
+// with both <meta refresh> and a script fallback.
+import Link from 'next/link';
 
-export default function Home() {
+export const dynamic = 'force-static';
+
+export default function RootRedirect() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <Header />
-      <div className="flex-1">
-        <Hero />
-      </div>
-      <Footer />
-    </main>
+    <>
+      <meta httpEquiv="refresh" content="0; url=/zh/" />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: "window.location.replace('/zh/');",
+        }}
+      />
+      <main className="flex min-h-screen items-center justify-center text-[var(--color-text-mute)]">
+        <p className="font-display text-sm tracking-[0.3em] uppercase">
+          Redirecting · 跳转中 ·{' '}
+          <Link href="/zh/" className="link-underline">
+            Tarokiki
+          </Link>
+        </p>
+      </main>
+    </>
   );
 }

@@ -3,83 +3,91 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import type { Locale } from '@/lib/i18n/config';
+import type { Dictionary } from '@/lib/i18n/dictionaries';
 
-const navItems = [
-  { name: '主页', en: 'Home', href: '/' },
-  { name: '音乐', en: 'Music', href: '/music' },
-  { name: '演出', en: 'Shows', href: '/shows' },
-  { name: '画廊', en: 'Gallery', href: '/gallery' },
-  { name: '关于', en: 'About', href: '/about' },
-];
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
 
-export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export function Header({ locale, dict }: Props) {
+  const [open, setOpen] = useState(false);
+
+  const items = [
+    { href: `/${locale}`, label: dict.nav.home },
+    { href: `/${locale}/music`, label: dict.nav.music },
+    { href: `/${locale}/shows`, label: dict.nav.shows },
+    { href: `/${locale}/gallery`, label: dict.nav.gallery },
+    { href: `/${locale}/about`, label: dict.nav.about },
+  ];
 
   return (
     <header
+      className="sticky top-0 z-50 w-full border-b border-[var(--color-line)] bg-[var(--color-ink)]/85 backdrop-blur-md"
       suppressHydrationWarning
-      className="sticky top-0 z-50 w-full border-b border-silver/10 bg-ink/70 backdrop-blur-md transition-colors duration-300"
     >
-      <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-4">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="group flex items-center gap-3 font-heading text-xl md:text-2xl font-bold tracking-[0.2em] hover:scale-[1.02] transition-transform"
-        >
-          <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-amethyst-light/40 text-rose-light shadow-[inset_0_0_15px_rgba(157,116,217,0.35)] group-hover:shadow-[inset_0_0_25px_rgba(227,106,138,0.5)] transition-all">
-            <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden>
-              <path d="M12 2 L14 9 L21 9 L15.5 13.5 L17.5 21 L12 16.5 L6.5 21 L8.5 13.5 L3 9 L10 9 Z" />
-            </svg>
-          </span>
-          <span className="text-cantarella">TAROKIKI</span>
-          <span className="hidden sm:inline text-xs font-light tracking-[0.3em] text-silver/70">·塔罗琪琪·</span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 lg:gap-8 items-center">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="group relative text-sm lg:text-base font-medium tracking-wider text-silver/80 hover:text-moon transition-colors font-heading uppercase"
-            >
-              {item.en}
-              <span className="absolute -bottom-1 left-0 right-0 mx-auto h-px w-0 bg-gradient-to-r from-transparent via-rose-light to-transparent transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
-          <div className="pl-4 border-l border-silver/15">
-            <ThemeToggle />
-          </div>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-3 md:hidden">
-          <ThemeToggle />
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-full border border-silver/20 p-2 text-silver hover:border-amethyst-light/50 hover:text-moon transition-colors"
-            aria-label="Toggle menu"
-            suppressHydrationWarning
+      <div className="mx-auto max-w-[1280px] px-6 md:px-10">
+        <div className="flex h-16 items-center justify-between gap-6 md:h-20">
+          {/* Masthead */}
+          <Link
+            href={`/${locale}`}
+            className="group flex items-baseline gap-3"
+            aria-label="Tarokiki — Home"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-violet)] breathe" />
+            <span className="font-display text-xl md:text-2xl font-medium tracking-[0.32em] text-[var(--color-text)] uppercase">
+              Tarokiki
+            </span>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {items.map((it) => (
+              <Link
+                key={it.href}
+                href={it.href}
+                className="font-body text-[12px] tracking-[0.28em] uppercase text-[var(--color-text-soft)] hover:text-[var(--color-text)] transition-colors"
+              >
+                {it.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right: language switcher (desktop) */}
+          <div className="hidden md:flex items-center gap-4">
+            <span className="h-3 w-px bg-[var(--color-line)]" />
+            <LanguageSwitcher current={locale} />
+          </div>
+
+          {/* Mobile toggle */}
+          <div className="flex items-center gap-3 md:hidden">
+            <LanguageSwitcher current={locale} />
+            <button
+              onClick={() => setOpen(!open)}
+              className="rounded-full border border-[var(--color-line)] p-2 text-[var(--color-text-soft)] hover:text-[var(--color-text)] transition-colors"
+              aria-label="Toggle menu"
+              suppressHydrationWarning
+            >
+              {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <nav className="md:hidden border-t border-silver/10 bg-ink/95 backdrop-blur-md">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-1">
-            {navItems.map((item) => (
+      {/* Mobile drawer */}
+      {open && (
+        <nav className="md:hidden border-t border-[var(--color-line)] bg-[var(--color-ink)]/95 backdrop-blur-md">
+          <div className="mx-auto max-w-[1280px] px-6 py-4 flex flex-col gap-1">
+            {items.map((it) => (
               <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-baseline justify-between px-4 py-3 text-base font-medium text-silver/90 hover:text-rose-light hover:bg-amethyst/10 rounded-lg transition-colors font-heading tracking-widest uppercase"
+                key={it.href}
+                href={it.href}
+                onClick={() => setOpen(false)}
+                className="font-body py-3 text-sm tracking-[0.28em] uppercase text-[var(--color-text-soft)] hover:text-[var(--color-text)] transition-colors border-b border-[var(--color-line)]/50 last:border-b-0"
               >
-                <span>{item.en}</span>
-                <span className="text-xs text-silver/50">{item.name}</span>
+                {it.label}
               </Link>
             ))}
           </div>
