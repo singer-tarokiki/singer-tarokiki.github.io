@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Serif+SC:wght@300..900&display=swap');
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-heading: 'Cinzel', 'Noto Serif SC', serif;
+    --font-display: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    --font-body: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  }
+
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+:root {
+  /* Cantarella-inspired: midnight violet base, blood-rose accents, moonlit silver text */
+  --background: #0E0814;
+  --foreground: #F1E4EC;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-heading: var(--font-heading);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  /* Core palette */
+  --color-ink: #0E0814;            /* deepest violet-black */
+  --color-ink-soft: #1A1226;       /* card / panel ground */
+  --color-velvet: #2A1840;         /* deep velvet purple */
+  --color-amethyst: #5C2E8E;       /* signature amethyst */
+  --color-amethyst-light: #9D74D9; /* glassy lavender highlight */
+  --color-rose: #B4264A;           /* blood rose / crimson */
+  --color-rose-light: #E36A8A;     /* petal pink glow */
+  --color-moon: #F1E4EC;           /* moonlight cream */
+  --color-silver: #C9B7D6;         /* silver-lavender */
+  --color-gold: #D4B97A;           /* tarnished gold trim */
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light "Moonlit" variant — a softer, paler ritual chamber */
+.light {
+  --background: #F4ECEF;
+  --foreground: #2A1840;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(92, 46, 142, 0.25), transparent 60%),
+    radial-gradient(ellipse at 85% 30%, rgba(180, 38, 74, 0.18), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(157, 116, 217, 0.12), transparent 60%);
+  background-attachment: fixed;
+}
+
+.light body {
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(157, 116, 217, 0.30), transparent 60%),
+    radial-gradient(ellipse at 85% 30%, rgba(227, 106, 138, 0.18), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(92, 46, 142, 0.12), transparent 60%);
+}
+
+/* Subtle vignette to deepen the gothic mood */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+.light body::before {
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(42, 24, 64, 0.18) 100%);
+  mix-blend-mode: normal;
+}
+
+/* Star-dust shimmer */
+@keyframes shimmer {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.05); }
+}
+.shimmer { animation: shimmer 3s ease-in-out infinite; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
+
+@keyframes rose-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.rose-spin { animation: rose-spin 40s linear infinite; }
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(157, 116, 217, 0.35), 0 0 50px rgba(180, 38, 74, 0.18); }
+  50%      { box-shadow: 0 0 45px rgba(157, 116, 217, 0.65), 0 0 90px rgba(180, 38, 74, 0.35); }
+}
+.glow-pulse { animation: glow-pulse 5s ease-in-out infinite; }
+
+/* Ornate text gradient — used for the singer name etc. */
+.text-cantarella {
+  background: linear-gradient(135deg, #F1E4EC 0%, #E36A8A 35%, #9D74D9 65%, #D4B97A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Card edge sheen */
+.velvet-card {
+  background: linear-gradient(160deg, rgba(42, 24, 64, 0.75) 0%, rgba(14, 8, 20, 0.85) 100%);
+  border: 1px solid rgba(201, 183, 214, 0.12);
+  backdrop-filter: blur(8px);
+}
+.light .velvet-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85) 0%, rgba(244, 236, 239, 0.75) 100%);
+  border: 1px solid rgba(92, 46, 142, 0.18);
+}
+
+/* Anchor everything above the vignette */
+main, header, footer { position: relative; z-index: 2; }

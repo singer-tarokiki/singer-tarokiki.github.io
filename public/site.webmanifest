@@ -1,0 +1,14 @@
+{
+  "name": "Kiki Zhang · Independent Vocalist",
+  "short_name": "Kiki · Taro",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#0E0814",
+  "background_color": "#0E0814",
+  "display": "standalone"
+}
