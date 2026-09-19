@@ -6,7 +6,19 @@ import { ko } from './locales/ko';
 
 export interface Dictionary {
   meta: { title: string; tagline: string; description: string };
-  nav: { home: string; music: string; shows: string; gallery: string; about: string };
+  nav: {
+    home: string;
+    music: string;
+    shows: string;
+    gallery: string;
+    about: string;
+    language: string;
+    skipToContent: string;
+    primaryNavigation: string;
+    mobileNavigation: string;
+    openMenu: string;
+    closeMenu: string;
+  };
   home: {
     eyebrow: string;
     name: string;
@@ -15,6 +27,8 @@ export interface Dictionary {
     leadSecondary: string;
     featuredEyebrow: string;
     featuredCta: string;
+    seeAllSongs: string;
+    with: string;
     sectionsEyebrow: string;
     quote: string;
   };
@@ -33,6 +47,8 @@ export interface Dictionary {
     lede: string;
     upcoming: string;
     past: string;
+    emptyUpcoming: string;
+    emptyPast: string;
     statusOpen: string;
     statusSoldOut: string;
     statusArchive: string;
@@ -53,8 +69,20 @@ export interface Dictionary {
     contactLead: string;
     sendEmail: string;
     factsHeading: string;
+    factLabels: {
+      basedIn: string;
+      education: string;
+      affiliation: string;
+      genre: string;
+    };
   };
-  footer: { rights: string; moonlight: string };
+  footer: {
+    rights: string;
+    moonlight: string;
+    listen: string;
+    follow: string;
+    email: string;
+  };
 }
 
 const dictionaries: Record<Locale, Dictionary> = { zh, en, ja, ko };

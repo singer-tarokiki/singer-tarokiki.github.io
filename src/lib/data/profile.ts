@@ -27,7 +27,8 @@ export const profile = {
     instagram: 'https://www.instagram.com/tarokiki_/',
     spotify: 'https://open.spotify.com/artist/23Okc89aKfHUSw9UwRkVuJ',
     appleMusic: 'https://music.apple.com/cn/artist/tarokiki/1811319781',
-    youtube: 'https://www.youtube.com/channel/UCc3Fj3jBe1B6YN1JKmPK-7A',
+    qqMusic: 'https://y.qq.com/n/ryqq/singer/002oRxJi1k07DD',
+    neteaseMusic: 'https://music.163.com/#/artist?id=52813264',
     vgmdb: 'https://vgmdb.net/artist/73474',
   },
   email: 'hello@tarokiki.com', // placeholder — replace with real contact
@@ -43,17 +44,17 @@ export const bio = {
   ],
   en: [
     'Tarokiki is a Tokyo-based independent vocalist and songwriter, currently a graduate student of Jazz Voice at Senzoku Gakuen College of Music.',
-    'Since 2025 she has lent her voice to the original soundtrack of Wuthering Waves (鸣潮) by Kuro Games — from the Rinascita wind theme "Whispered Whims of the Wind", to the first-anniversary theme "Eversinging Song", the 2.4 Lupa finale "Ode to the Nameless Martyr", and most recently the 3.1 Amis theme "Voyaging Star\'s Farewell" sung in duet with Emi Evans. Her voice is the one that storylines and characters tend to remember at once.',
+    'Since 2025 she has lent her voice to the original soundtrack of Wuthering Waves (鸣潮) by Kuro Games — from the Rinascita wind theme "Whispered Whims of the Wind", to the first-anniversary theme "Eversinging Song", the 2.4 Lupa finale "Ode to the Nameless Martyr", and most recently the 3.1 Aemeath theme "Voyaging Star\'s Farewell" sung in duet with Emi Evans. Her voice is the one that storylines and characters tend to remember at once.',
     'A clear, narrative timbre, sitting somewhere between pop balladry and jazz storytelling. She describes herself as: "Singer, songwriter, sometimes a jazz cat."',
   ],
   ja: [
     'Tarokiki（タロキキ）は東京を拠点に活動する独立系ボーカリスト／ソングライター。洗足学園音楽大学・ジャズ声楽の大学院に在籍。',
-    '2025年以降、Kuro Gamesのオープンワールド ARPG『鳴潮 (Wuthering Waves)』のサウンドトラックに参加 —— リナシタの風テーマ『風語りの即興舞宴』に始まり、一周年テーマ『終わらない歌』、2.4 ルパ最終章テーマ『無名の抵抗者へ捧ぐ』、そして 3.1 でEmi Evansとデュエットした愛弥斯（Amis）テーマ『遠航星の別れ』まで、彼女の声はストーリーとキャラクターの両方に記憶されてきた。',
+    '2025年以降、Kuro Gamesのオープンワールド ARPG『鳴潮 (Wuthering Waves)』のサウンドトラックに参加 —— リナシタの風テーマ『風語りの即興舞宴』に始まり、一周年テーマ『終わらない歌』、2.4 ルパ最終章テーマ『無名の抵抗者へ捧ぐ』、そして 3.1 でEmi Evansとデュエットした愛弥斯（Aemeath）テーマ『遠航星の別れ』まで、彼女の声はストーリーとキャラクターの両方に記憶されてきた。',
     '澄んで物語性のある音色。ポップ・バラードとジャズ・ナラティブの中間。本人いわく「歌い手で、ソングライターで、たまにジャズ猫」。',
   ],
   ko: [
     'Tarokiki는 도쿄를 거점으로 활동하는 인디 보컬리스트이자 싱어송라이터로, 일본 센조쿠가쿠엔 음악대학 재즈 보컬 대학원에 재학 중이다.',
-    '2025년부터 Kuro Games의 오픈월드 ARPG 《명조 (Wuthering Waves)》 사운드트랙에 목소리를 더해왔다 —— 리나시타 바람 테마 〈바람을 듣는 자의 즉흥 무도회〉를 시작으로, 1주년 테마 〈끝나지 않는 노래〉, 2.4 루파 스토리 피날레 〈이름 없는 저항자에게〉, 그리고 3.1 버전에서 Emi Evans와 듀엣으로 부른 아미스(Amis) 테마 〈원항성의 작별〉까지 —— 그녀의 목소리는 이야기와 캐릭터 모두에게 동시에 기억된다.',
+    '2025년부터 Kuro Games의 오픈월드 ARPG 《명조 (Wuthering Waves)》 사운드트랙에 목소리를 더해왔다 —— 리나시타 바람 테마 〈바람을 듣는 자의 즉흥 무도회〉를 시작으로, 1주년 테마 〈끝나지 않는 노래〉, 2.4 루파 스토리 피날레 〈이름 없는 저항자에게〉, 그리고 3.1 버전에서 Emi Evans와 듀엣으로 부른 아미스(Aemeath) 테마 〈원항성의 작별〉까지 —— 그녀의 목소리는 이야기와 캐릭터 모두에게 동시에 기억된다.',
     '맑고 서사적인 음색, 팝 발라드와 재즈 내러티브 사이. 본인 말로는 "가수, 싱어송라이터, 가끔은 재즈 고양이".',
   ],
 } as const;
@@ -99,7 +100,7 @@ export const timeline = [
     year: '2026.02',
     title: {
       zh: '3.1 版本爱弥斯主题 · 远航星的告别（与 Emi Evans 合唱）',
-      en: '3.1 Amis theme · Voyaging Star\'s Farewell (duet with Emi Evans)',
+      en: '3.1 Aemeath theme · Voyaging Star\'s Farewell (duet with Emi Evans)',
       ja: '3.1 愛弥斯テーマ『遠航星の別れ』（Emi Evansとデュエット）',
       ko: '3.1 아미스 테마 · 원항성의 작별 (Emi Evans와 듀엣)',
     },

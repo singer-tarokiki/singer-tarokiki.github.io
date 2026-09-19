@@ -3,10 +3,12 @@ import { ArrowUpRight } from 'lucide-react';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { locales, type Locale, isLocale } from '@/lib/i18n/config';
 import { notFound } from 'next/navigation';
-import { songs, featuredSong } from '@/lib/data/songs';
+import { featuredSong } from '@/lib/data/songs';
+import { getMediaLinks } from '@/lib/data/media-links';
 import { Starfield } from '@/components/Starfield';
 import { SparkleIcon } from '@/components/SparkleIcon';
 import { PaperPlane } from '@/components/PaperPlane';
+import { PageReveal } from '@/components/PageReveal';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -31,9 +33,10 @@ export default async function Home({
 
   return (
     <main className="px-4 md:px-8">
+    <PageReveal>
       <div className="mx-auto max-w-[1200px]">
         {/* —— Hero —— */}
-        <section className="relative mt-6 overflow-hidden rounded-[3rem] glass-card-warm">
+        <section className="relative mt-6 overflow-hidden rounded-[3rem] glass-card-warm fade-up" style={{ animationDelay: '0s' }}>
           <Starfield className="opacity-90" shootingStar />
 
           <div className="relative px-6 md:px-16 pt-20 pb-28 md:pt-32 md:pb-40 text-center">
@@ -49,10 +52,10 @@ export default async function Home({
 
             {/* big name */}
             <h1
-              className="mt-6 font-display font-medium tracking-tight leading-[0.95] fade-up"
+              className="mt-6 font-display font-medium fade-up"
               style={{ animationDelay: '0.12s' }}
             >
-              <span className="block text-dream text-[clamp(4.5rem,14vw,12rem)]">
+              <span className="page-title block text-dream text-[clamp(4.5rem,14vw,12rem)]">
                 Tarokiki
               </span>
             </h1>
@@ -93,8 +96,8 @@ export default async function Home({
         </section>
 
         {/* —— Featured track —— */}
-        <section className="mt-24 md:mt-32 grid gap-10 md:grid-cols-12 md:gap-12 items-center">
-          <div className="md:col-span-5">
+        <section className="mt-24 md:mt-32 grid gap-10 md:grid-cols-12 md:gap-12 items-center fade-up" style={{ animationDelay: '0.48s' }}>
+          <div className="md:col-span-5 fade-up" style={{ animationDelay: '0.58s' }}>
             <p className="script text-2xl text-[var(--color-rose)] mb-3">
               {dict.home.featuredEyebrow.split('·')[0].trim()}
             </p>
@@ -108,7 +111,7 @@ export default async function Home({
             )}
           </div>
 
-          <div className="md:col-span-7 glass-card rounded-[2.5rem] p-7 md:p-10 relative overflow-hidden">
+          <div className="md:col-span-7 glass-card rounded-[2.5rem] p-7 md:p-10 relative overflow-hidden fade-up" style={{ animationDelay: '0.68s' }}>
             {/* corner sparkle */}
             <SparkleIcon size={36} className="absolute top-6 right-6 text-[var(--color-rose-soft)] drift" />
 
@@ -116,7 +119,7 @@ export default async function Home({
               {featuredSong.release[locale]}
               {featuredSong.collaborators && featuredSong.collaborators.length > 0 && (
                 <span className="text-[var(--color-ink-mute)]">
-                  {' '}· with {featuredSong.collaborators.join(', ')}
+                  {' '}· {dict.home.with} {featuredSong.collaborators.join(', ')}
                 </span>
               )}
             </p>
@@ -127,62 +130,43 @@ export default async function Home({
             </div>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              {featuredSong.links?.spotify && (
+              {getMediaLinks(featuredSong.links, locale).map((link) => (
                 <Link
-                  href={featuredSong.links.spotify}
+                  key={link.platform}
+                  href={link.href}
                   target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-white/80 px-5 py-2 text-xs font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-md transition-all"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded-full bg-white/80 px-5 py-2 text-xs font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-md transition-all"
                 >
-                  Spotify ↗
+                  {link.label} <ArrowUpRight className="h-3 w-3" />
                 </Link>
-              )}
-              {featuredSong.links?.youtube && (
-                <Link
-                  href={featuredSong.links.youtube}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-white/80 px-5 py-2 text-xs font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-md transition-all"
-                >
-                  YouTube ↗
-                </Link>
-              )}
-              {featuredSong.links?.appleMusic && (
-                <Link
-                  href={featuredSong.links.appleMusic}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-white/80 px-5 py-2 text-xs font-semibold text-[var(--color-ink)] hover:bg-white hover:shadow-md transition-all"
-                >
-                  Apple Music ↗
-                </Link>
-              )}
+              ))}
             </div>
 
             <Link
               href={`/${locale}/music`}
               className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-rose)] hover:text-[var(--color-ink)] transition-colors link-soft"
             >
-              See all songs <ArrowUpRight className="h-3.5 w-3.5" />
+              {dict.home.seeAllSongs} <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </section>
 
         {/* —— In this issue (rounded soft tiles) —— */}
-        <section className="mt-24 md:mt-32">
+        <section className="mt-24 md:mt-32 fade-up" style={{ animationDelay: '0.88s' }}>
           <p className="text-center script text-2xl text-[var(--color-rose)] mb-10">
             {dict.home.sectionsEyebrow.split('·')[0].trim()}
           </p>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {sections.map((s, i) => (
+            {sections.map((s, index) => (
               <Link
                 key={s.href}
                 href={s.href}
                 className={
-                  'group relative overflow-hidden rounded-[2rem] p-7 transition-all hover:-translate-y-1 hover:shadow-[0_24px_50px_-20px_rgba(184,154,196,0.4)] ' +
+                  'group relative overflow-hidden rounded-[2rem] p-7 transition-all hover:-translate-y-1 hover:shadow-[0_24px_50px_-20px_rgba(184,154,196,0.4)] fade-up ' +
                   'bg-gradient-to-br ' + s.hue
                 }
-                style={{ minHeight: '170px' }}
+                style={{ minHeight: '170px', animationDelay: `${1.02 + index * 0.08}s` }}
               >
                 <span className="absolute top-4 right-4 text-3xl text-white/70 group-hover:text-white transition-colors drift">
                   {s.emoji}
@@ -197,7 +181,7 @@ export default async function Home({
         </section>
 
         {/* —— Quote —— */}
-        <section className="mt-24 md:mt-32 mb-16">
+        <section className="mt-24 md:mt-32 mb-16 fade-up" style={{ animationDelay: '1.35s' }}>
           <div className="relative glass-card-warm rounded-[2.5rem] px-8 md:px-16 py-16 md:py-24 text-center overflow-hidden">
             <PaperPlane size={36} className="absolute top-8 left-8 text-[var(--color-violet-soft)] drift-slow" />
             <PaperPlane size={28} className="absolute bottom-8 right-10 text-[var(--color-rose-soft)] drift" />
@@ -214,6 +198,7 @@ export default async function Home({
           </div>
         </section>
       </div>
+    </PageReveal>
     </main>
   );
 }

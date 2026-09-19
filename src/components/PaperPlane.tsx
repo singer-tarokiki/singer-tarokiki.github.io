@@ -3,7 +3,7 @@ interface PaperPlaneProps {
   size?: number;
 }
 
-// Minimal paper-plane mark — pays quiet tribute to Amis without being cartoonish.
+// Minimal paper-plane mark — pays quiet tribute to Aemeath without being cartoonish.
 export function PaperPlane({ className, size = 24 }: PaperPlaneProps) {
   return (
     <svg

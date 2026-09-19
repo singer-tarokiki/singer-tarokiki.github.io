@@ -2,25 +2,30 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { CSSProperties } from 'react';
 import { locales, localeLabels, type Locale, isLocale } from '@/lib/i18n/config';
 
 interface Props {
   current: Locale;
+  ariaLabel?: string;
 }
 
-export function LanguageSwitcher({ current }: Props) {
+export function LanguageSwitcher({ current, ariaLabel = 'Language' }: Props) {
   const pathname = usePathname() ?? `/${current}`;
   const segments = pathname.split('/').filter(Boolean);
   const rest = segments.length > 0 && isLocale(segments[0])
     ? segments.slice(1).join('/')
     : segments.join('/');
+  const activeIndex = locales.indexOf(current);
 
   return (
     <div
-      className="inline-flex items-center rounded-full bg-white/60 px-1 py-0.5 shadow-[0_2px_8px_-4px_rgba(184,154,196,0.25)]"
+      className="language-switcher"
+      style={{ '--language-index': activeIndex } as CSSProperties}
       role="navigation"
-      aria-label="Language"
+      aria-label={ariaLabel}
     >
+      <span className="language-switcher__slider" aria-hidden="true" />
       {locales.map((loc) => {
         const href = '/' + [loc, rest].filter(Boolean).join('/');
         const isActive = loc === current;
@@ -30,14 +35,9 @@ export function LanguageSwitcher({ current }: Props) {
             href={href}
             hrefLang={loc}
             aria-current={isActive ? 'page' : undefined}
-            className={
-              'rounded-full px-2.5 py-1 text-[11px] font-semibold tracking-wider transition-all ' +
-              (isActive
-                ? 'bg-gradient-to-r from-[var(--color-rose)] to-[var(--color-violet)] text-white shadow-sm'
-                : 'text-[var(--color-ink-mute)] hover:text-[var(--color-ink-soft)]')
-            }
+            className={'language-switcher__option ' + (isActive ? 'language-switcher__option--active' : '')}
           >
-            {localeLabels[loc].short}
+            <span>{localeLabels[loc].short}</span>
           </Link>
         );
       })}

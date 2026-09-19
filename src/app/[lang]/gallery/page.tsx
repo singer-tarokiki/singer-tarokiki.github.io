@@ -6,6 +6,7 @@ import { SparkleIcon } from '@/components/SparkleIcon';
 import { Starfield } from '@/components/Starfield';
 import { StarTrail } from '@/components/StarTrail';
 
+import { PageReveal } from '@/components/PageReveal';
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
@@ -42,29 +43,30 @@ export default async function GalleryPage({
 
   return (
     <main className="px-4 md:px-8">
+      <PageReveal>
       <div className="mx-auto max-w-[1200px]">
         {/* header */}
-        <section className="relative mt-6 overflow-hidden rounded-[3rem] glass-card-warm">
+        <section className="relative mt-6 overflow-hidden rounded-[3rem] glass-card-warm fade-up" style={{ animationDelay: '0s' }}>
           <Starfield className="opacity-70" />
           <div className="relative px-6 md:px-16 py-20 md:py-28 text-center">
-            <p className="eyebrow inline-flex items-center gap-2">
+            <p className="eyebrow inline-flex items-center gap-2 fade-up" style={{ animationDelay: '0.05s' }}>
               <SparkleIcon size={12} className="text-[var(--color-rose)]" />
               {dict.gallery.eyebrow.split('·')[0].trim()}
               <SparkleIcon size={12} className="text-[var(--color-rose)]" />
             </p>
-            <h1 className="mt-6 font-display text-6xl md:text-7xl lg:text-8xl text-dream font-medium leading-[0.95]">
+            <h1 className="page-title mt-6 font-display text-6xl md:text-7xl lg:text-8xl text-dream font-medium fade-up" style={{ animationDelay: '0.12s' }}>
               {dict.gallery.title}
             </h1>
-            <p className="mx-auto mt-7 max-w-2xl text-base md:text-lg leading-relaxed text-[var(--color-ink-soft)]">
+            <p className="mx-auto mt-10 max-w-2xl text-base md:text-lg leading-relaxed text-[var(--color-ink-soft)] fade-up" style={{ animationDelay: '0.2s' }}>
               {dict.gallery.lede}
             </p>
           </div>
         </section>
 
         {/* Masonry-ish via columns */}
-        <section className="mt-12 md:mt-20 columns-1 gap-5 sm:columns-2 md:columns-3">
+        <section className="mt-12 md:mt-20 columns-1 gap-5 sm:columns-2 md:columns-3 fade-up" style={{ animationDelay: '0.35s' }}>
           {frames.map((f, i) => (
-            <figure key={i} className="mb-5 break-inside-avoid">
+            <figure key={i} className="mb-5 break-inside-avoid fade-up" style={{ animationDelay: `${0.45 + i * 0.08}s` }}>
               <div className={`relative w-full ${f.ratio} overflow-hidden rounded-[1.75rem] bg-gradient-to-br ${f.hue}`}>
                 {i % 3 === 1 && (
                   <div className="absolute -right-12 bottom-6">
@@ -87,10 +89,11 @@ export default async function GalleryPage({
           ))}
         </section>
 
-        <p className="mt-12 text-center script text-lg text-[var(--color-rose)]">
+        <p className="mt-12 text-center script text-lg text-[var(--color-rose)] fade-up" style={{ animationDelay: '1s' }}>
           {dict.gallery.placeholder}
         </p>
       </div>
+      </PageReveal>
     </main>
   );
 }

@@ -2,6 +2,8 @@
 // Sources: Spotify, Apple Music, Bilibili, official Kuro Games OST releases.
 // Newest first.
 
+import type { MediaLinks } from './media-links';
+
 export type Song = {
   slug: string;
   title: {
@@ -25,12 +27,7 @@ export type Song = {
     ko: string;
   };
   collaborators?: string[];
-  links?: {
-    spotify?: string;
-    appleMusic?: string;
-    bilibili?: string;
-    youtube?: string;
-  };
+  links?: MediaLinks;
   highlight?: boolean;
 };
 
@@ -48,49 +45,55 @@ export const songs: Song[] = [
     released: '2026-02',
     release: {
       zh: '《鸣潮》3.1 版本 · 爱弥斯 主题曲',
-      en: 'Wuthering Waves 3.1 · Amis Theme',
-      ja: '『鳴潮』3.1 · 愛弥斯（Amis）テーマ',
-      ko: '《명조》3.1 · 아미스(Amis) 테마',
+      en: 'Wuthering Waves 3.1 · Aemeath Theme',
+      ja: '『鳴潮』3.1 · 愛弥斯（Aemeath）テーマ',
+      ko: '《명조》3.1 · 아미스(Aemeath) 테마',
     },
     game: wuwa,
     related: {
       zh: '爱弥斯 / 飞行雪绒',
-      en: 'Amis / Flying Velvet',
+      en: 'Aemeath / Fleet Snowfluff',
       ja: '愛弥斯 / 飛行雪絨',
       ko: '아미스 / 비행 벨벳',
     },
     collaborators: ['Emi Evans'],
     links: {
       spotify: 'https://open.spotify.com/track/3uI2KolgU1Pt41ywffsggr',
-      youtube: 'https://www.youtube.com/watch?v=WQ90G6gqycY',
+      youtube: 'https://www.youtube.com/watch?v=yFGwnxkzLxI',
+      // 歌手本人发布的演唱版本。
+      bilibili: 'https://www.bilibili.com/video/BV1VWP4z4Eem/',
+      qqMusic: 'https://y.qq.com/n/ryqq/songDetail/0038W0WD0TlByu',
+      neteaseMusic: 'https://music.163.com/#/song?id=3346496288',
     },
     highlight: true,
   },
   {
-    slug: 'anchored-boat',
+    slug: 'the-moored-boat',
     title: {
       zh: '停泊的舟',
-      en: 'Anchored Boat',
+      en: 'The Moored Boat',
       ja: '停泊する舟',
       ko: '정박한 배',
     },
     released: '2026',
     release: {
       zh: '《鸣潮》3.2 版本 · 爱弥斯隐藏曲',
-      en: 'Wuthering Waves 3.2 · Amis Hidden Track',
+      en: 'Wuthering Waves 3.2 · Aemeath Hidden Track',
       ja: '『鳴潮』3.2 · 愛弥斯 隠しトラック',
       ko: '《명조》3.2 · 아미스 히든 트랙',
     },
     game: wuwa,
     related: {
       zh: '爱弥斯 / 飞行雪绒',
-      en: 'Amis / Flying Velvet',
+      en: 'Aemeath / Fleet Snowfluff',
       ja: '愛弥斯 / 飛行雪絨',
       ko: '아미스 / 비행 벨벳',
     },
     collaborators: ['飞行雪绒'],
     links: {
-      youtube: 'https://www.youtube.com/watch?v=N6e-wg50kfc',
+      youtube: 'https://www.youtube.com/watch?v=lPQ2AqeMsII',
+      qqMusic: 'https://y.qq.com/n/ryqq/songDetail/002ZeKSj1hwHCp',
+      neteaseMusic: 'https://music.163.com/#/song?id=3360104038',
     },
   },
   {
@@ -114,6 +117,10 @@ export const songs: Song[] = [
       en: 'Rinascita · Main story OST',
       ja: 'リナシタ · メインストーリー OST',
       ko: '리나시타 · 메인 스토리 OST',
+    },
+    links: {
+      qqMusic: 'https://y.qq.com/n/ryqq/songDetail/002HmvKu2Lj5OQ',
+      neteaseMusic: 'https://music.163.com/#/song?id=2747639949',
     },
   },
   {
@@ -140,7 +147,9 @@ export const songs: Song[] = [
     },
     collaborators: ['Thena A', 'jixwang', 'VISION SOUND'],
     links: {
-      youtube: 'https://www.youtube.com/watch?v=41yjNAOy6sw',
+      youtube: 'https://www.youtube.com/watch?v=AuMcCiwNazo',
+      qqMusic: 'https://y.qq.com/n/ryqq/songDetail/002lmk6D3XxnnD',
+      neteaseMusic: 'https://music.163.com/#/song?id=2722447989',
     },
   },
   {
@@ -168,6 +177,8 @@ export const songs: Song[] = [
     collaborators: ['xTR33x'],
     links: {
       spotify: 'https://open.spotify.com/track/3sqgTY2pxGWaaYLN1B4B4L',
+      qqMusic: 'https://y.qq.com/n/ryqq/songDetail/000vbct71iRxKN',
+      neteaseMusic: 'https://music.163.com/#/song?id=2699982115',
     },
     highlight: true,
   },
@@ -196,6 +207,8 @@ export const songs: Song[] = [
     links: {
       spotify: 'https://open.spotify.com/track/4al9NmYiLL74vomyuyVseR',
       appleMusic: 'https://music.apple.com/cn/artist/tarokiki/1811319781',
+      qqMusic: 'https://y.qq.com/n/ryqq/songDetail/0016PZkP4Q1y6y',
+      neteaseMusic: 'https://music.163.com/#/song?id=2707023728',
     },
   },
   {
@@ -222,6 +235,8 @@ export const songs: Song[] = [
     },
     links: {
       appleMusic: 'https://music.apple.com/us/song/nights-bright-feat-tarokiki/1858471141',
+      qqMusic: 'https://y.qq.com/n/ryqq/songDetail/002ZMqoB3ssJYC',
+      neteaseMusic: 'https://music.163.com/#/song?id=3325283031',
     },
   },
 ];

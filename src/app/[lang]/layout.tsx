@@ -48,7 +48,7 @@ export default async function LangLayout({
   return (
     <>
       <Header locale={lang as Locale} dict={dict} />
-      <div className="flex-1">{children}</div>
+      <div id="main-content" tabIndex={-1} className="flex-1 outline-none">{children}</div>
       <Footer locale={lang as Locale} dict={dict} />
     </>
   );
